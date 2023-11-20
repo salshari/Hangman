@@ -17,3 +17,16 @@ screen = pygame.display.set_mode((width, height))
 # use RGB values to define colors 
 black = (0, 0, 0)
 white = (255, 255, 255)
+
+class WordBank:
+    '''
+    this class represents a list of words that could be given to the user to guess
+    parent class used for extensibility of game
+    '''
+    def __init__(self):
+        self.words = []
+
+    # returns a randomly chosen word from the list of words 
+    def get_word(self):
+        return random.choice(self.words)
+
