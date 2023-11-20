@@ -30,3 +30,13 @@ class WordBank:
     def get_word(self):
         return random.choice(self.words)
 
+class FruitWordBank(WordBank):
+    '''
+    inherits from parent class WordBank, represnts a word bank for fruits
+    '''
+    def __init__(self):
+        # calls constructor of the parent class
+        super().__init__()
+
+        # a list of fruits
+        self.words = ["apple", "banana", "orange", "grape", "pineapple", "mango", "blueberry", "cherry", "watermelon"]
