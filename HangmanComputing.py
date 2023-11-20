@@ -40,3 +40,14 @@ class FruitWordBank(WordBank):
 
         # a list of fruits
         self.words = ["apple", "banana", "orange", "grape", "pineapple", "mango", "blueberry", "cherry", "watermelon"]
+
+class HolidayWordBank(WordBank):
+    '''
+    inherits from parent class WordBank, represnts a word bank for holidays
+    '''
+    def __init__(self):
+        # calls constructor of the parent class
+        super().__init__()
+
+        # a list of holidays
+        self.words = ["Christmas", "Thanksgiving", "Valentines", "Easter", "Halloween"]
