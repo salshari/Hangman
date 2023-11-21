@@ -106,5 +106,11 @@ def draw_hangman_pygame(stage):
     if stage >= 6:
         pygame.draw.line(screen, black, (250, 200), (300, 250), 5)
 
+        # if the user has used this sixth/last attempt, a "you lost" messsage will print to the pygame window
+        font = pygame.font.Font(None, 56)
+        text = font.render("You lost!", True, black)
+        text_rect = text.get_rect(center=(width // 2, height - 50))
+        screen.blit(text, text_rect)
+        
     # update the Pygame window
     pygame.display.flip()
