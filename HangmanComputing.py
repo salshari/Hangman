@@ -57,13 +57,13 @@ def draw_gallow_in_pygame():
     draw the gallow from which the Hangman will be hung in the pygame window
     '''
     # draw the bottom horizontal bar
-    pygame.draw.line(screen, black, (50, 250), (350, 350), 5)
+    pygame.draw.line(screen, black, (50, 350), (350, 350), 5)
     # draw the vertical line for the pole
-    pygame.draw.line(screen, black, (200, 250), (200, 150), 5)
+    pygame.draw.line(screen, black, (200, 350), (200, 50), 5)
     # draw a small horizontal line at the top of the vertical line
-    pygame.draw.line(screen, black, (200, 150), (250, 150), 5)
+    pygame.draw.line(screen, black, (200, 50), (250, 50), 5)
     # draw a small vertical bar attached to the top of the head and to the small horizontal line
-    pygame.draw.line(screen, black, (250, 150), (250, 180), 5)
+    pygame.draw.line(screen, black, (250, 50), (250, 80), 5)
 
     # update the Pygame window
     pygame.display.update()
