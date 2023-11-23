@@ -111,6 +111,88 @@ def draw_hangman_pygame(stage):
         text = font.render("You lost!", True, black)
         text_rect = text.get_rect(center=(width // 2, height - 50))
         screen.blit(text, text_rect)
-        
+
     # update the Pygame window
     pygame.display.flip()
+
+def draw_hangman_text(stage):
+    '''
+    determines which parts of the Hangman figure will be 
+    drawn to the terminal with a text based interface
+    using the current stage
+    '''
+
+    # set up the stages that the Hangman figure will be drawn in to the terminal
+    stages = [
+        # stage 0 is the Hangman figure when no incorrect guesses have been made
+            """
+            _______
+            |     |
+            |    
+            |    
+            |    
+            |    
+            |__|___
+            """,
+        # stage 1 is the Hangman figure when 1 incorrect guess has been made and the head is drawn
+            """
+            _______
+            |     |
+            |     O
+            |    
+            |    
+            |    
+            |__|___
+            """,
+        # stage 2 is the Hangman figure when 2 incorrect guesses have been made and the body is drawn
+            """
+            _______
+            |     |
+            |     O
+            |     |
+            |    
+            |    
+            |__|___
+            """,
+        # stage 3 is the Hangman figure when 3 incorrect guesses have been made and the left arm is drawn
+            """
+            _______
+            |     |
+            |     O
+            |    /|
+            |    
+            |    
+            |__|___
+            """,
+        # stage 4 is the Hangman figure when 4 incorrect guesses have been made and the right arm is drawn
+            """
+            _______
+            |     |
+            |     O
+            |    /|\\
+            |    
+            |    
+            |__|___
+            """,
+        # stage 5 is the Hangman figure when 5 incorrect guesses have been made and the left leg is drawn
+            """
+            _______
+            |     |
+            |     O
+            |    /|\\
+            |    / 
+            |    
+            |__|___
+            """,
+        # stage 6 is the Hangman figure when 6 incorrect guesses have been made and the right leg is drawn
+            """
+            _______
+            |     |
+            |     O
+            |    /|\\
+            |    / \\
+            |    
+            |__|___
+            """
+        ]
+    
