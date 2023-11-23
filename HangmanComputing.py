@@ -211,7 +211,80 @@ def draw_hangman(stage, using_pygame=True):
     # if using_pygame is True, the Hangman figure will be drawn using Pygame
     if using_pygame:
         draw_hangman_pygame(stage)
-        
+
     # if using_pygame is False, the Hangman figure will be drawn using a text-based interface
     else:
         draw_hangman_text(stage)
+
+class HangmanGame:
+    '''
+    this class manages the state of the game and tracks which letters have been guessed 
+    as well as tracks the state of our Hangman figure
+    '''
+    # same stages as defined in draw_hangman_text function
+    stages = [
+            """
+            _______
+            |     |
+            |    
+            |    
+            |    
+            |    
+            |__|___
+            """,
+            """
+            _______
+            |     |
+            |     O
+            |    
+            |    
+            |    
+            |__|___
+            """,
+            """
+            _______
+            |     |
+            |     O
+            |     |
+            |    
+            |    
+            |__|___
+            """,
+            """
+            _______
+            |     |
+            |     O
+            |    /|
+            |    
+            |    
+            |__|___
+            """,
+            """
+            _______
+            |     |
+            |     O
+            |    /|\\
+            |    
+            |    
+            |__|___
+            """,
+            """
+            _______
+            |     |
+            |     O
+            |    /|\\
+            |    / 
+            |    
+            |__|___
+            """,
+            """
+            _______
+            |     |
+            |     O
+            |    /|\\
+            |    / \\
+            |    
+            |__|___
+            """
+        ]
+    
