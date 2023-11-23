@@ -204,3 +204,14 @@ def draw_hangman_text(stage):
         # print the corresponding stage of the Hangman figure
         print(stages[incorrect_guesses])
 
+def draw_hangman(stage, using_pygame=True):
+    '''
+    this function chooses between the Pygame interface or the text-based interface
+    '''
+    # if using_pygame is True, the Hangman figure will be drawn using Pygame
+    if using_pygame:
+        draw_hangman_pygame(stage)
+        
+    # if using_pygame is False, the Hangman figure will be drawn using a text-based interface
+    else:
+        draw_hangman_text(stage)
