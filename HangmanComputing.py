@@ -196,3 +196,11 @@ def draw_hangman_text(stage):
             """
         ]
     
+      # track the amount of incorrect guesses 
+    incorrect_guesses = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
+    
+    # if incorrect guesses is less than number of attempts
+    if incorrect_guesses < len(stages):
+        # print the corresponding stage of the Hangman figure
+        print(stages[incorrect_guesses])
+
