@@ -306,3 +306,16 @@ class HangmanGame:
                 displayed_word += "_ "
         return displayed_word
     
+    def guess_letter(self, letter):
+        '''
+        checks the letter guessed by user
+        adds this letter to the list of letters guesses
+        handles repeat guesses by printing an error message to the terminal
+        '''
+        letter = letter.lower()
+        if letter in self.guessed_letters:
+            print("That letter has already been guessed! Try again!")
+            return
+        
+        # adds guessed letter to a list of letters guessed by the user
+        self.guessed_letters.add(letter)
