@@ -325,3 +325,10 @@ class HangmanGame:
         this function checks if all the letters in the word being guessed have been guessed
         '''
         return all(letter in self.guessed_letters for letter in self.chosen_word)
+    
+    def check_lose(self):
+        '''
+        this function checks to see if the user has used all their attempts and therefore, lost the game
+        '''
+        incorrect_guesses = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
+        return incorrect_guesses >= self.max_attempts
