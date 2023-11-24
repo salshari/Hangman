@@ -221,6 +221,12 @@ class HangmanGame:
     this class manages the state of the game and tracks which letters have been guessed 
     as well as tracks the state of our Hangman figure
     '''
+
+    def __init__(self, word):
+        self.chosen_word = word.lower()
+        self.guessed_letters = set()
+        self.max_attempts = 6
+        
     # same stages as defined in draw_hangman_text function
     stages = [
             """
