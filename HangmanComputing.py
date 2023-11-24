@@ -308,16 +308,22 @@ class HangmanGame:
     
     def guess_letter(self, letter):
         '''
-        checks the letter guessed by user
-        adds this letter to the list of letters guesses
+        checks the letter guessed by the user
+        adds this letter to the list of letters guessed
         handles repeat guesses by printing an error message to the terminal
+        makes sure the guess is not a number
         '''
         letter = letter.lower()
+        
+        # Check if the input is a valid letter
+        if not letter.isalpha():
+            print("Invalid input! Please enter a letter.")
+            return
+        
         if letter in self.guessed_letters:
             print("That letter has already been guessed! Try again!")
             return
         
-        # adds guessed letter to a list of letters guessed by the user
         self.guessed_letters.add(letter)
 
     def check_win(self):
@@ -339,3 +345,4 @@ class HangmanGame:
         the game is over if the user has won or if the user has lost
         '''
         return self.check_lose() or self.check_win()
+
