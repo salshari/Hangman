@@ -226,7 +226,7 @@ class HangmanGame:
         self.chosen_word = word.lower()
         self.guessed_letters = set()
         self.max_attempts = 6
-        
+
     # same stages as defined in draw_hangman_text function
     stages = [
             """
@@ -293,4 +293,16 @@ class HangmanGame:
             |__|___
             """
         ]
+    
+    def display_word_to_guess(self):
+        '''
+        displays the current state of the word that the user is attempting to guess
+        '''
+        displayed_word = ""
+        for letter in self.chosen_word:
+            if letter in self.guessed_letters:
+                displayed_word += letter + " "
+            else:
+                displayed_word += "_ "
+        return displayed_word
     
