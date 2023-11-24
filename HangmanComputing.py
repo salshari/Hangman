@@ -332,3 +332,10 @@ class HangmanGame:
         '''
         incorrect_guesses = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
         return incorrect_guesses >= self.max_attempts
+    
+    def is_game_over(self):
+        '''
+        this function determines if the game is over
+        the game is over if the user has won or if the user has lost
+        '''
+        return self.check_lose() or self.check_win()
