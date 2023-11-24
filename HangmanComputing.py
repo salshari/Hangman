@@ -319,3 +319,9 @@ class HangmanGame:
         
         # adds guessed letter to a list of letters guessed by the user
         self.guessed_letters.add(letter)
+
+    def check_win(self):
+        '''
+        this function checks if all the letters in the word being guessed have been guessed
+        '''
+        return all(letter in self.guessed_letters for letter in self.chosen_word)
