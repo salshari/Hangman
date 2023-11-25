@@ -354,4 +354,14 @@ class HangmanGame:
         incorrect_guesses = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
         if incorrect_guesses < len(self.stages):
             print(self.stages[incorrect_guesses])
-        
+    
+    def draw_hangman(self, use_pygame=True):
+        '''
+        this function chooses between the Pygame interface or the text-based interface
+        '''
+        stage_index = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
+        if stage_index < len(self.stages):
+            if use_pygame: 
+                draw_hangman_pygame(stage_index)
+            else: 
+                self.draw_hangman_text()
