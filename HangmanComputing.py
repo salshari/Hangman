@@ -345,4 +345,13 @@ class HangmanGame:
         the game is over if the user has won or if the user has lost
         '''
         return self.check_lose() or self.check_win()
-
+    
+    def draw_hangman_text(self):
+        '''
+        this function draws the Hangman figure in stages using a text-based interface 
+        the figure is drawn based on the number of incorrect guesses the user has guessed
+        '''
+        incorrect_guesses = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
+        if incorrect_guesses < len(self.stages):
+            print(self.stages[incorrect_guesses])
+        
