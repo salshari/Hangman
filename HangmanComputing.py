@@ -355,7 +355,7 @@ class HangmanGame:
         if incorrect_guesses < len(self.stages):
             print(self.stages[incorrect_guesses])
     
-    def choose_interface(self, use_pygame=True):
+    def draw_hangman(self, use_pygame=True):
         '''
         this function chooses between the Pygame interface or the text-based interface
         '''
