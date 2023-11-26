@@ -417,6 +417,10 @@ def play_hangman(word_bank):
     # if the user has won, display a congratulations message
     if game.check_win():
         print("Congratulations! You guessed the word:", game.chosen_word)
-    # if the user did not win, display a message alerting them of their loss
+    # if the user did not win and they're playing in the pygame window, display a message alerting them of their loss
     if not game.check_win() and use_pygame == True:
         print("Sorry, you ran out of attempts and have lost. The word was:", game.chosen_word)
+    # if the user did not win and they're playing in the terminal, display a message alerting them of their loss
+    if not game.check_win() and use_pygame == False:
+        print("Sorry, you ran out of attempts and have lost. The word was:", game.chosen_word)
+    
