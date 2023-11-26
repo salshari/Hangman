@@ -386,3 +386,15 @@ def select_word_bank():
     else:
         print("Invalid choice. Defaulting to option 1, Fruits.")
         return FruitWordBank()
+
+def play_hangman(word_bank):
+    '''
+    handles gamplay for the Hangman game using the wordbank and drawing method chosen by the user
+    '''
+
+    # ask the user how they would like the game to be displayed
+    print("Choose how to display the game:")
+    print("1. Pygame")
+    print("2. Text")
+
+    drawing_choice = input("Enter your choice (1 or 2): ")
