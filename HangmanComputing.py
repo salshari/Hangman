@@ -398,3 +398,18 @@ def play_hangman(word_bank):
     print("2. Text")
 
     drawing_choice = input("Enter your choice (1 or 2): ")
+
+    # if drawing_choice is 1, the pygame interface will be used
+    use_pygame = (drawing_choice == "1")
+
+    # choose a random word from the word bank chosen by the user 
+    chosen_word = word_bank.get_word()
+
+    game = HangmanGame(chosen_word)
+
+    # as long as the game is not over, keep displaying the word, updating the word, asking for a letter, and taking a letter from user
+    while not game.is_game_over():
+        print("\nWord:", game.display_word_to_guess())
+        game.draw_hangman(use_pygame)
+        guess = input("Enter a letter: ")
+        game.guess_letter(guess)
