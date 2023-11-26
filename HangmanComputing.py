@@ -424,3 +424,11 @@ def play_hangman(word_bank):
     if not game.check_win() and use_pygame == False:
         print("Sorry, you ran out of attempts and have lost. The word was:", game.chosen_word)
     
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                # If the window close button is clicked, stop the game loop
+                running = False
+
+    pygame.quit() 
