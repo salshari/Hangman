@@ -365,3 +365,24 @@ class HangmanGame:
                 draw_hangman_pygame(stage_index)
             else: 
                 self.draw_hangman_text()
+
+def select_word_bank():
+    '''
+    this function allows the user to pick which word bank they would like to use to pick their word to be guessed
+    '''
+
+    print("Choose a word bank:")
+    print("1. Fruits")
+    print("2. Holidays")
+    user_choice = input("Enter your choice (1 or 2): ")
+
+    # if the user enters 1, their chosen word bank is the FruitWordBank
+    if user_choice == "1":
+        return FruitWordBank()
+    # if the user enters 2, their chosen word bank is the HolidayWordBank
+    elif user_choice == "2":
+        return HolidayWordBank()
+    # if the user enters an invalid choice, their chosen word bank defaults to option 1, the FruitWordBank
+    else:
+        print("Invalid choice. Defaulting to option 1, Fruits.")
+        return FruitWordBank()
