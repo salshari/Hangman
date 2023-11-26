@@ -432,3 +432,7 @@ def play_hangman(word_bank):
                 running = False
 
     pygame.quit() 
+
+# set the game into motion
+chosen_word_bank = select_word_bank()
+play_hangman(chosen_word_bank)
