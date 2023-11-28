@@ -2,7 +2,6 @@
 import random
 import pygame
 
-
 # initialize the Pygame modules
 pygame.init()
 
@@ -51,6 +50,24 @@ class HolidayWordBank(WordBank):
 
         # a list of holidays
         self.words = ["Christmas", "Thanksgiving", "Valentines", "Easter", "Halloween"]
+
+class USA_StateWordBank(WordBank):
+    '''
+    inherits from parent class WordBank, represnts a word bank for USA states
+    '''
+    def __init__(self):
+        # calls constructor of the parent class
+        super().__init__()
+
+        # a list of holidays
+        self.words = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 
+                      'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
+                      'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 
+                      'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 
+                      'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 
+                      'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 
+                      'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 
+                      'Wisconsin', 'Wyoming']
 
 def draw_gallow_in_pygame():
     '''
@@ -374,7 +391,8 @@ def select_word_bank():
     print("Choose a word bank:")
     print("1. Fruits")
     print("2. Holidays")
-    user_choice = input("Enter your choice (1 or 2): ")
+    print("3. States of the USA")
+    user_choice = input("Enter your choice (1, 2, or 3): ")
 
     # if the user enters 1, their chosen word bank is the FruitWordBank
     if user_choice == "1":
@@ -382,6 +400,9 @@ def select_word_bank():
     # if the user enters 2, their chosen word bank is the HolidayWordBank
     elif user_choice == "2":
         return HolidayWordBank()
+    # if the user enters 3, their chosen word bank is the USA_StateWordBank
+    elif user_choice == "3":
+        return USA_StateWordBank()
     # if the user enters an invalid choice, their chosen word bank defaults to option 1, the FruitWordBank
     else:
         print("Invalid choice. Defaulting to option 1, Fruits.")
