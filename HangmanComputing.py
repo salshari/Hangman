@@ -1,7 +1,6 @@
 # include necessary libraries
 import random
 import pygame
-import time
 
 # initialize the Pygame modules
 pygame.init()
@@ -413,8 +412,6 @@ def play_hangman(word_bank):
     '''
     handles gamplay for the Hangman game using the wordbank and drawing method chosen by the user
     '''
-    
-    pygame.init()
 
     # ask the user how they would like the game to be displayed
     print("Choose how to display the game:")
@@ -469,16 +466,14 @@ def play_hangman(word_bank):
             """)
         print("Sorry, you ran out of attempts and have lost. The word was:", game.chosen_word)
     
-    # the pygame window will close 5 seconds after the game is over
-    time.sleep(5)
-    pygame.quit()
-
     running = True
     while running:
-        if game.is_game_over == True:
-            # If the window close button is clicked, stop the game loop
-            running = False
- 
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                # If the window close button is clicked, stop the game loop
+                running = False
+
+    pygame.quit() 
 
 # set the game into motion
 chosen_word_bank = select_word_bank()
