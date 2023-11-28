@@ -405,8 +405,8 @@ def select_word_bank():
         return USA_StateWordBank()
     # if the user enters an invalid choice, their chosen word bank defaults to option 1, the FruitWordBank
     else:
-        print("Invalid choice. Defaulting to option 1, Fruits.")
-        return FruitWordBank()
+        print("Invalid choice. Defaulting to option 3, States of the USA.")
+        return USA_StateWordBank()
 
 def play_hangman(word_bank):
     '''
