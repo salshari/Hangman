@@ -51,23 +51,17 @@ class HolidayWordBank(WordBank):
         # a list of holidays
         self.words = ["Christmas", "Thanksgiving", "Valentines", "Easter", "Halloween"]
 
-class USA_StateWordBank(WordBank):
+class AnimalWordBank(WordBank):
     '''
-    inherits from parent class WordBank, represnts a word bank for USA states
+    inherits from parent class WordBank, represnts a word bank for animals
     '''
     def __init__(self):
         # calls constructor of the parent class
         super().__init__()
 
         # a list of holidays
-        self.words = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 
-                      'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
-                      'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 
-                      'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 
-                      'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 
-                      'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 
-                      'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 
-                      'Wisconsin', 'Wyoming']
+        self.words = ['sebra', 'elephant', 'cat', 'dog', 'mouse', 'giraffe', 'lion', 'cheetah', 
+                      'alligator', 'snake', 'dolphin', 'rhino', 'penguin']
 
 def draw_gallow_in_pygame():
     '''
@@ -391,7 +385,7 @@ def select_word_bank():
     print("Choose a word bank:")
     print("1. Fruits")
     print("2. Holidays")
-    print("3. States of the USA")
+    print("3. Animals")
     user_choice = input("Enter your choice (1, 2, or 3): ")
 
     # if the user enters 1, their chosen word bank is the FruitWordBank
@@ -400,13 +394,13 @@ def select_word_bank():
     # if the user enters 2, their chosen word bank is the HolidayWordBank
     elif user_choice == "2":
         return HolidayWordBank()
-    # if the user enters 3, their chosen word bank is the USA_StateWordBank
+    # if the user enters 3, their chosen word bank is the AnimalWordBank
     elif user_choice == "3":
-        return USA_StateWordBank()
+        return AnimalWordBank()
     # if the user enters an invalid choice, their chosen word bank defaults to option 1, the FruitWordBank
     else:
-        print("Invalid choice. Defaulting to option 3, States of the USA.")
-        return USA_StateWordBank()
+        print("Invalid choice. Defaulting to option 1, Fruits.")
+        return FruitWordBank()
 
 def play_hangman(word_bank):
     '''
