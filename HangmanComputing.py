@@ -331,10 +331,10 @@ class HangmanGame:
         makes sure the guess is not a number
         '''
         letter = letter.lower()
-        
+
         # Check if the input is a valid letter
-        if not letter.isalpha():
-            print("Invalid input! Please enter a letter.")
+        if not letter.isalpha() or len(letter) != 1:
+            print("Invalid input! Please enter a letter or adjust your guess to 1 letter")
             return
         
         if letter in self.guessed_letters:
