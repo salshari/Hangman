@@ -18,12 +18,30 @@ class TestHangmanGameClass(unittest.TestCase):
         game.guess_letter('b')
         self.assertIn('b', game.guessed_letters)
 
+    # test if the check_lose function works properly
+    def check_lose_function_test(self):
+        game = HangmanGame("difficult")
+        for letter in "abcde":
+            game.guess_letter(letter)
+        self.assertTrue(game.check_lose())
+        
     # test if the check_win function works properly
     def check_win_function_test(self):
         game = HangmanGame("zebra")
         game.guessed_letters = {'z', 'e', 'b', 'r', 'a'}
         self.assertTrue(game.check_win())
 
+    # test if the is_game_over function works properly
+    def is_game_over_function_test(self):
+        game = HangmanGame("several")
+        for letter in "qwertyuiopasdfghjklzxcvbnm":
+            game.guess_letter(letter)
+        self.assertTrue(game.is_game_over())
 
+        game = HangmanGame("test")
+        for letter in "test":
+            game.guess_letter(letter)
+        self.assertTrue(game.is_game_over())
+        
 if __name__ == '__main__':
     unittest.main()
