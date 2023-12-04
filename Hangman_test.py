@@ -51,6 +51,7 @@ class TestWordBanks(unittest.TestCase):
     class representing the test cases for the subclasses of the Parent class WordBank
     there are three subclasses: one for fruits, one for holidays, and one for animals
     '''
+    # the following tests ensure that the word randomly chosen is in the appropriate word bank
     
     # test if the FruitWordBank class works properly 
     def fruit_word_bank_class_test(self):
