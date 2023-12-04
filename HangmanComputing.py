@@ -414,6 +414,10 @@ def play_hangman(word_bank):
 
     drawing_choice = input("Enter your choice (1 or 2): ")
 
+    # logic if the user makes an invalid input while choosing how to display the game
+    if drawing_choice != 1 and drawing_choice !=2:
+        print("Invalid choice. Defaulting to option 2, Text Display in Terminal")
+
     # if drawing_choice is 1, the pygame interface will be used
     use_pygame = (drawing_choice == "1")
 
