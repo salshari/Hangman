@@ -59,8 +59,8 @@ class AnimalWordBank(WordBank):
         # calls constructor of the parent class
         super().__init__()
 
-        # a list of holidays
-        self.words = ['sebra', 'elephant', 'cat', 'dog', 'mouse', 'giraffe', 'lion', 'cheetah', 
+        # a list of animals
+        self.words = ['zebra', 'elephant', 'cat', 'dog', 'mouse', 'giraffe', 'lion', 'cheetah', 
                       'alligator', 'snake', 'dolphin', 'rhino', 'penguin']
 
 def draw_gallow_in_pygame():
@@ -207,10 +207,10 @@ def draw_hangman_text(stage):
             """
         ]
     
-      # track the amount of incorrect guesses 
+    # track the amount of incorrect guesses 
     incorrect_guesses = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
     
-    # if incorrect guesses is less than number of attempts
+    # if incorrect guesses is less than number of attempts (stage number)
     if incorrect_guesses < len(stages):
         # print the corresponding stage of the Hangman figure
         print(stages[incorrect_guesses])
@@ -219,6 +219,7 @@ def draw_hangman(stage, using_pygame=True):
     '''
     this function chooses between the Pygame interface or the text-based interface
     '''
+
     # if using_pygame is True, the Hangman figure will be drawn using Pygame
     if using_pygame:
         draw_hangman_pygame(stage)
@@ -236,7 +237,7 @@ class HangmanGame:
     def __init__(self, word):
         self.chosen_word = word.lower()
         self.guessed_letters = set()
-        self.max_attempts = 6
+        self.lives = 6
 
     # same stages as defined in draw_hangman_text function
     stages = [
@@ -309,10 +310,13 @@ class HangmanGame:
         '''
         displays the current state of the word that the user is attempting to guess
         '''
+        
         displayed_word = ""
         for letter in self.chosen_word:
+            # if letter guessed is in the word, update the word hidden word by replacing the _ with the letter followed by a space
             if letter in self.guessed_letters:
                 displayed_word += letter + " "
+            # if letter is not guessed, replace the letter with an "_ " 
             else:
                 displayed_word += "_ "
         return displayed_word
@@ -324,37 +328,47 @@ class HangmanGame:
         handles repeat guesses by printing an error message to the terminal
         makes sure the guess is not a number
         '''
+
+        # makes the letter guessed lowercase
         letter = letter.lower()
 
-        # Check if the input is a valid letter
+        # display error messgae if the input is not a valid letter or if the more than 1 letter is guessed
         if not letter.isalpha() or len(letter) != 1:
             print("Invalid input! Please enter a letter or adjust your guess to 1 letter")
             return
         
+        # display error message for repeated guesses
         if letter in self.guessed_letters:
             print("That letter has already been guessed! Try again!")
             return
         
+        # add the guessed letter to the list of guessed letters for tracking purposes 
         self.guessed_letters.add(letter)
 
     def check_win(self):
         '''
-        this function checks if all the letters in the word being guessed have been guessed
+        this function checks if all the letters in the word being guessed have been guessed 
+        if True, user has won
         '''
+
         return all(letter in self.guessed_letters for letter in self.chosen_word)
     
     def check_lose(self):
         '''
         this function checks to see if the user has used all their attempts and therefore, lost the game
         '''
+
         incorrect_guesses = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
-        return incorrect_guesses >= self.max_attempts
+
+        # if the number of incorrect guesses is equal to 6, the user has lost
+        return incorrect_guesses >= self.lives
     
     def is_game_over(self):
         '''
         this function determines if the game is over
         the game is over if the user has won or if the user has lost
         '''
+
         return self.check_lose() or self.check_win()
     
     def draw_hangman_text(self):
@@ -362,6 +376,7 @@ class HangmanGame:
         this function draws the Hangman figure in stages using a text-based interface 
         the figure is drawn based on the number of incorrect guesses the user has guessed
         '''
+
         incorrect_guesses = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
         if incorrect_guesses < len(self.stages):
             print(self.stages[incorrect_guesses])
@@ -371,9 +386,11 @@ class HangmanGame:
         this function chooses between the Pygame interface or the text-based interface
         '''
         stage_index = len([letter for letter in self.guessed_letters if letter not in self.chosen_word])
-        if stage_index < len(self.stages):
+        if  len(self.stages) > stage_index:
+            # if user chooses Pygame interface, use_pygame=True and the Hangman figure should be drawn in the pygame window
             if use_pygame: 
                 draw_hangman_pygame(stage_index)
+            # if user chooses text interface, use_pygame=False and the Hangman figure should be drawn in the terminal
             else: 
                 self.draw_hangman_text()
 
@@ -382,6 +399,7 @@ def select_word_bank():
     this function allows the user to pick which word bank they would like to use to pick their word to be guessed
     '''
 
+    # ask user to choose word bank
     print("Choose a word bank:")
     print("1. Fruits")
     print("2. Holidays")
@@ -435,7 +453,7 @@ def play_hangman(word_bank):
 
     # if the user has won, display a congratulations message
     if game.check_win():
-        print("Congratulations! You guessed the word:", game.chosen_word)
+        print("Congratulations! You guessed the correct word:", game.chosen_word)
     # if the user did not win and they're playing in the pygame window, display a message alerting them of their loss
     if not game.check_win() and use_pygame == True:
             game.draw_hangman(use_pygame)
@@ -450,7 +468,7 @@ def play_hangman(word_bank):
             """)
         '''
             pygame.draw.line(screen, black, (200, 200), (250, 250), 5)
-            print("Sorry, you ran out of attempts and have lost. The word was:", game.chosen_word)
+            print("You have run out of attempts and have lost. The correct word was:", game.chosen_word)
     # if the user did not win and they're playing in the terminal, display a message alerting them of their loss
     if not game.check_win() and use_pygame == False:
         print("""
@@ -462,7 +480,7 @@ def play_hangman(word_bank):
             |    
             |__|___
             """)
-        print("Sorry, you ran out of attempts and have lost. The word was:", game.chosen_word)
+        print("You have run out of attempts and have lost. The correct word was:", game.chosen_word)
     
     running = True
     while running:
