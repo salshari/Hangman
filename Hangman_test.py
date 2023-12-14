@@ -56,21 +56,21 @@ class TestWordBanks(unittest.TestCase):
     # test if the FruitWordBank class works properly 
     def fruit_word_bank_class_test(self):
         fruit_word_bank = FruitWordBank()
-        randomly_selected_word = fruit_word_bank.get_word()
+        randomly_selected_word = fruit_word_bank.get_word_to_guess()
         # check if the word that was randomly selected is in the FruitWorDBank
         self.assertIn(randomly_selected_word, fruit_word_bank.words)
 
         # test if the HolidayWordBank class works properly 
     def holiday_word_bank_class_test(self):
         holiday_word_bank = HolidayWordBank()
-        randomly_selected_word = holiday_word_bank.get_word()
+        randomly_selected_word = holiday_word_bank.get_word_to_guess()
         # check if the word that was randomly selected is in the HolidayWordBank
         self.assertIn(randomly_selected_word, holiday_word_bank.words)
 
         # test if the AnimalWordBank class works properly 
     def animal_word_bank_class_test(self):
         animal_word_bank = AnimalWordBank()
-        randomly_selected_word = animal_word_bank.get_word()
+        randomly_selected_word = animal_word_bank.get_word_to_guess()
         # check if the word that was randomly selected is in the AnimalWOrdBank
         self.assertIn(randomly_selected_word, animal_word_bank.words)
 

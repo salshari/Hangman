@@ -16,23 +16,26 @@ screen = pygame.display.set_mode((width, height))
 # use RGB values to define colors 
 black = (0, 0, 0)
 white = (255, 255, 255)
+red = (255, 0, 0)
 
 class WordBank:
     '''
     this class represents a list of words that could be given to the user to guess
     parent class used for extensibility of game
     '''
+
     def __init__(self):
         self.words = []
 
     # returns a randomly chosen word from the list of words 
-    def get_word(self):
+    def get_word_to_guess(self):
         return random.choice(self.words)
 
 class FruitWordBank(WordBank):
     '''
     inherits from parent class WordBank, represnts a word bank for fruits
     '''
+
     def __init__(self):
         # calls constructor of the parent class
         super().__init__()
@@ -44,6 +47,7 @@ class HolidayWordBank(WordBank):
     '''
     inherits from parent class WordBank, represnts a word bank for holidays
     '''
+
     def __init__(self):
         # calls constructor of the parent class
         super().__init__()
@@ -55,6 +59,7 @@ class AnimalWordBank(WordBank):
     '''
     inherits from parent class WordBank, represnts a word bank for animals
     '''
+
     def __init__(self):
         # calls constructor of the parent class
         super().__init__()
@@ -67,6 +72,7 @@ def draw_gallow_in_pygame():
     '''
     draw the gallow from which the Hangman will be hung in the pygame window
     '''
+
     # draw the bottom horizontal bar
     pygame.draw.line(screen, black, (50, 350), (350, 350), 5)
     # draw the vertical line for the pole
@@ -118,9 +124,9 @@ def draw_hangman_pygame(stage):
         pygame.draw.line(screen, black, (250, 200), (300, 250), 5)
 
         # if the user has used this sixth/last attempt, a "you lost" messsage will print to the pygame window
-        font = pygame.font.Font(None, 56)
-        text = font.render("You lost!", True, black)
-        text_rect = text.get_rect(center=(width // 2, height - 50))
+        font = pygame.font.Font(None, 60)
+        text = font.render("You lost!", True, red)
+        text_rect = text.get_rect(center=(width // 2, height - 70))
         screen.blit(text, text_rect)
 
     # update the Pygame window
@@ -144,6 +150,8 @@ def draw_hangman_text(stage):
             |    
             |    
             |__|___
+
+            6 attempts remaining
             """,
         # stage 1 is the Hangman figure when 1 incorrect guess has been made and the head is drawn
             """
@@ -154,6 +162,8 @@ def draw_hangman_text(stage):
             |    
             |    
             |__|___
+
+            5 attempts remaining
             """,
         # stage 2 is the Hangman figure when 2 incorrect guesses have been made and the body is drawn
             """
@@ -164,6 +174,8 @@ def draw_hangman_text(stage):
             |    
             |    
             |__|___
+
+            4 attempts remaining
             """,
         # stage 3 is the Hangman figure when 3 incorrect guesses have been made and the left arm is drawn
             """
@@ -174,6 +186,8 @@ def draw_hangman_text(stage):
             |    
             |    
             |__|___
+
+            3 attempts remaining
             """,
         # stage 4 is the Hangman figure when 4 incorrect guesses have been made and the right arm is drawn
             """
@@ -184,6 +198,8 @@ def draw_hangman_text(stage):
             |    
             |    
             |__|___
+
+            2 attempts remaining
             """,
         # stage 5 is the Hangman figure when 5 incorrect guesses have been made and the left leg is drawn
             """
@@ -194,6 +210,8 @@ def draw_hangman_text(stage):
             |    / 
             |    
             |__|___
+
+            1 attempt remaining
             """,
         # stage 6 is the Hangman figure when 6 incorrect guesses have been made and the right leg is drawn
             """
@@ -204,6 +222,8 @@ def draw_hangman_text(stage):
             |    / \\
             |    
             |__|___
+
+            0 attempts remaning
             """
         ]
     
@@ -249,6 +269,8 @@ class HangmanGame:
             |    
             |    
             |__|___
+
+            6 attempts remaining
             """,
             """
             _______
@@ -258,6 +280,8 @@ class HangmanGame:
             |    
             |    
             |__|___
+
+            5 attempts remaining
             """,
             """
             _______
@@ -267,6 +291,8 @@ class HangmanGame:
             |    
             |    
             |__|___
+
+            4 attempts remaining
             """,
             """
             _______
@@ -276,6 +302,8 @@ class HangmanGame:
             |    
             |    
             |__|___
+
+            3 attempts remaining
             """,
             """
             _______
@@ -285,6 +313,8 @@ class HangmanGame:
             |    
             |    
             |__|___
+
+            2 attempts remaining
             """,
             """
             _______
@@ -294,6 +324,8 @@ class HangmanGame:
             |    / 
             |    
             |__|___
+
+            1 attempt remaining
             """,
             """
             _______
@@ -303,6 +335,8 @@ class HangmanGame:
             |    / \\
             |    
             |__|___
+
+            0 attempts remaining
             """
         ]
     
@@ -440,7 +474,7 @@ def play_hangman(word_bank):
     use_pygame = (drawing_choice == "1")
 
     # choose a random word from the word bank chosen by the user 
-    chosen_word = word_bank.get_word()
+    chosen_word = word_bank.get_word_to_guess()
 
     game = HangmanGame(chosen_word)
 
@@ -448,7 +482,7 @@ def play_hangman(word_bank):
     while not game.is_game_over():
         print("\nWord:", game.display_word_to_guess())
         game.draw_hangman(use_pygame)
-        guess = input("Enter a letter: ")
+        guess = input("Enter one letter: ")
         game.guess_letter(guess)
 
     # if the user has won, display a congratulations message
@@ -465,6 +499,8 @@ def play_hangman(word_bank):
             |    / \\
             |    
             |__|___
+
+            0 attempts remaining
             """)
         '''
             pygame.draw.line(screen, black, (200, 200), (250, 250), 5)
@@ -479,6 +515,8 @@ def play_hangman(word_bank):
             |    / \\
             |    
             |__|___
+              
+            0 attempts remaining
             """)
         print("You have run out of attempts and have lost. The correct word was:", game.chosen_word)
     
