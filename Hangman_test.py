@@ -1,4 +1,5 @@
 import unittest
+# classes to import and test
 from HangmanComputing import HangmanGame
 from HangmanComputing import FruitWordBank
 from HangmanComputing import HolidayWordBank
