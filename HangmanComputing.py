@@ -41,7 +41,8 @@ class FruitWordBank(WordBank):
         super().__init__()
 
         # a list of fruits
-        self.words = ["apple", "banana", "orange", "grape", "pineapple", "mango", "blueberry", "cherry", "watermelon"]
+        self.words = ["apple", "banana", "orange", "grape", "pineapple", "mango", "blueberry", "cherry", 
+                      "watermelon", "coconut", "lemon", "peach", "cantaloupe", "plum", "raspberry", "strawberry"]
 
 class HolidayWordBank(WordBank):
     '''
