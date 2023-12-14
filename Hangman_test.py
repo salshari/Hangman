@@ -11,32 +11,32 @@ class TestHangmanGameClass(unittest.TestCase):
     '''
 
     # test if the display_word_to_guess fucntion works properly
-    def display_word_to_guess_function_test(self):
+    def test_display_word_to_guess_function_test(self):
         game = HangmanGame("apple")
         game.guessed_letters = {'a', 'p'}
         self.assertEqual(game.display_word_to_guess(), "a p p _ _ ")
 
     # test if the guess_letter function works properly
-    def guess_letter_function_test(self):
+    def test_guess_letter_function_test(self):
         game = HangmanGame("banana")
         game.guess_letter('b')
         self.assertIn('b', game.guessed_letters)
 
     # test if the check_lose function works properly
-    def check_lose_function_test(self):
+    def test_check_lose_function_test(self):
         game = HangmanGame("difficult")
-        for letter in "abcde":
+        for letter in "qwxvbp":
             game.guess_letter(letter)
         self.assertTrue(game.check_lose())
         
     # test if the check_win function works properly
-    def check_win_function_test(self):
+    def test_check_win_function_test(self):
         game = HangmanGame("zebra")
         game.guessed_letters = {'z', 'e', 'b', 'r', 'a'}
         self.assertTrue(game.check_win())
 
     # test if the is_game_over function works properly
-    def is_game_over_function_test(self):
+    def test_is_game_over_function_test(self):
         game = HangmanGame("several")
         for letter in "qwertyuiopasdfghjklzxcvbnm":
             game.guess_letter(letter)
@@ -55,21 +55,21 @@ class TestWordBanks(unittest.TestCase):
     # the following tests ensure that the word randomly chosen is in the appropriate word bank
     
     # test if the FruitWordBank class works properly 
-    def fruit_word_bank_class_test(self):
+    def test_fruit_word_bank_class_test(self):
         fruit_word_bank = FruitWordBank()
         randomly_selected_word = fruit_word_bank.get_word_to_guess()
         # check if the word that was randomly selected is in the FruitWorDBank
         self.assertIn(randomly_selected_word, fruit_word_bank.words)
 
         # test if the HolidayWordBank class works properly 
-    def holiday_word_bank_class_test(self):
+    def test_holiday_word_bank_class_test(self):
         holiday_word_bank = HolidayWordBank()
         randomly_selected_word = holiday_word_bank.get_word_to_guess()
         # check if the word that was randomly selected is in the HolidayWordBank
         self.assertIn(randomly_selected_word, holiday_word_bank.words)
 
         # test if the AnimalWordBank class works properly 
-    def animal_word_bank_class_test(self):
+    def test_animal_word_bank_class_test(self):
         animal_word_bank = AnimalWordBank()
         randomly_selected_word = animal_word_bank.get_word_to_guess()
         # check if the word that was randomly selected is in the AnimalWOrdBank
